@@ -11,4 +11,4 @@ class Player:
 
     def get_token(self):
         """Return the token of this player."""
-        return self.get_token
+        return self._token

@@ -1,30 +1,23 @@
 #!/usr/bin/env python3
-"""board module."""
+"""Tic Tac Toe game board module."""
+import games.base.board
 
 
-class Board:
-    """Docstring for Board."""
+class Board(games.base.board.Board):
+    """Board for Tic-Tac-Toe."""
 
     def __init__(self):
         """Initialize object."""
-        self._positions = [["", "", ""], ["", "", ""], ["", "", ""]]
+        super().__init__(row_count=3, col_count=3)
 
-    def place(self, token, pos):
-        """Place a token at the specifed position.
-
-        pos is a 2-size tuple containing an x,y coordinate.
-        """
-        if (self._positions[pos[0]][pos[1]] == ""):
-            self._positions[pos[0]][pos[1]] = token
-
-    def check_win(self):
-        """Check if the game has ended."""
-        return False
-
-    def get_board_view(self):
-        """Return a read-only view of the board as a tuple of tuples."""
-        temp = list()
-        for row in self._positions:
-            new_row = tuple(row)
-            temp.append(new_row)
-        return tuple(temp)
+    def __str__(self):
+        """String representation of the object."""
+        CELL_WIDTH = 3  # cell value + both side walls
+        COL_COUNT = 3  # Tic Tac Toe has 3 columns
+        sep = '-' * CELL_WIDTH * COL_COUNT  # seperator between each row
+        str_view = sep + '\n'
+        for row in self.get_board_view():
+            for cell in row:
+                str_view += "|" + cell + "|"
+            str_view += '\n' + sep + '\n'
+        return str_view.rstrip()
