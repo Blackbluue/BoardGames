@@ -10,16 +10,12 @@ class Board:
         self._EMPTY_CELL = empty_cell
         self._positions = [[empty_cell for col in range(col_count)] for row in range(row_count)]
 
-    def place(self, token, pos):
+    def place(self, token, x, y):
         """Place a token at the specifed position.
 
         pos is a 2-size iterable containing an x,y coordinate.
         """
-        self._positions[pos[0]][pos[1]] = token
-
-    def check_win(self):
-        """Check if the game has ended."""
-        return False  # method not finished
+        self._positions[x][y] = token
 
     def get_board_view(self):
         """Return a read-only view of the board as a tuple of tuples."""

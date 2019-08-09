@@ -10,6 +10,23 @@ class Board(games.base.board.Board):
         """Initialize object."""
         super().__init__(row_count=3, col_count=3)
 
+    def check_win(self, x, y):
+        """Check if the game has ended."""
+        view = self.get_board_view()
+        # check if previous move caused a win on vertical line
+        if view[0][y] == view[1][y] == view [2][y]:
+            return True
+        # check if previous move caused a win on horizontal line
+        if view[x][0] == view[x][1] == view[x][2]:
+            return True
+        # check if previous move was on the reverse diagonal and caused a win
+        if x == y and view[0][0] == view[1][1] == view[2][2]:
+            return True
+        # check if previous move was on the forward diagonal and caused a win
+        if x + y == 2 and view[0][2] == view[1][1] == view[2][0]:
+            return True
+        return False  # game not finished
+
     def __str__(self):
         """String representation of the object."""
         CELL_WIDTH = 3  # cell value + both side walls

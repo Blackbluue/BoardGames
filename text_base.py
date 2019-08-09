@@ -9,25 +9,37 @@ def main():
     board = Board()
     player1 = Player("x")
     player2 = Player("o")
+    turn = 1
 
-    while (not board.check_win()):
+    while True:
         print(board)
-        play_turn(player1, board)
+        if turn % 2 != 0:
+            current_player = player1
+        else:
+            current_player = player2
+        pos = play_turn(current_player, board)
+        if board.check_win(*pos):
+            print(board)
+            print("Player %s has won!" % current_player)
+            break
+        else:
+            turn += 1
     return
 
 
 def play_turn(player, board):
-    """."""
-    position = get_pos()
-    print(position)
-    board.place(player.get_token(), position)
+    """Allows a player to make a move. Returns the position played."""
+    position = get_pos(player.get_token())
+    board.place(player.get_token(), *position)
+    return position
 
 
-def get_pos():
+def get_pos(player):
     """Get user input for board position."""
     # need to add input validation
-    position = input("Choose a position to play: ").split(',')
+    position = input("Player %s choose a position to play: " % player).split(',')
     return tuple(int(char) for char in position)
+
 
 if __name__ == "__main__":
     main()
