@@ -12,3 +12,7 @@ class Player:
     def get_token(self):
         """Return the token of this player."""
         return self._token
+
+    def __repr__(self):
+        """String representation of the object."""
+        return self.get_token()

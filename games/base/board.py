@@ -17,10 +17,6 @@ class Board:
         """
         self._positions[pos[0]][pos[1]] = token
 
-    def check_win(self):
-        """Check if the game has ended."""
-        return False  # method not finished
-
     def get_board_view(self):
         """Return a read-only view of the board as a tuple of tuples."""
         return tuple(tuple(cell for cell in row) for row in self._positions)

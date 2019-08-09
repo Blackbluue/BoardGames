@@ -10,6 +10,11 @@ class Board(games.base.board.Board):
         """Initialize object."""
         super().__init__(row_count=3, col_count=3)
 
+    def check_win(self):
+        """Check if the game has ended."""
+        view = self.get_board_view()
+        return False  # method not finished
+
     def __str__(self):
         """String representation of the object."""
         CELL_WIDTH = 3  # cell value + both side walls
