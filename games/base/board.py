@@ -27,7 +27,6 @@ class Board:
         except:
             return None
 
-
     def get_board_view(self):
         """Return a read-only view of the board as a tuple of tuples."""
         return tuple(tuple(cell for cell in row) for row in self._positions)
