@@ -10,12 +10,23 @@ class Board:
         self._EMPTY_CELL = empty_cell
         self._positions = [[empty_cell for col in range(col_count)] for row in range(row_count)]
 
-    def place(self, token, x, y):
+    def place(self, token, row, col):
         """Place a token at the specifed position.
 
-        pos is a 2-size iterable containing an x,y coordinate.
-        """
-        self._positions[x][y] = token
+        Return the position the token was placed in if operation successful."""
+        self._positions[row][col] = token
+        return (row, col)
+
+    def get(self, row, col):
+        """Get the value of the specified cell.
+
+        Row and Column indicies start at 0. Negative indecies are valid. If out
+        of range of the board, will return None."""
+        try:
+            return self._positions[row][col]
+        except:
+            return None
+
 
     def get_board_view(self):
         """Return a read-only view of the board as a tuple of tuples."""
