@@ -3,7 +3,7 @@
 
 
 class Player:
-    """Docstring for Player."""
+    """Player for Tic Tac Toe."""
 
     def __init__(self, token):
         """Initialize object."""
