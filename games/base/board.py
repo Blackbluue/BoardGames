@@ -23,9 +23,13 @@ class Board:
         Row and Column indicies start at 0. Negative indecies are valid. If out
         of range of the board, will return None."""
         try:
-            return self._positions[row][col]
-        except:
-            return None
+            cell = self._positions[row][col]
+            if cell == self._EMPTY_CELL:
+                cell = None
+        except IndexError:
+            cell = None
+        finally:
+            return cell
 
     def get_board_view(self):
         """Return a read-only view of the board as a tuple of tuples."""
