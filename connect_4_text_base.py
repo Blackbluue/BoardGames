@@ -7,8 +7,8 @@ from games.connect4.player import Player
 def main():
     """Control program flow."""
     board = Board()
-    player1 = Player("R")
-    player2 = Player("B")
+    player1 = Player("x")
+    player2 = Player("o")
     turn = 1
 
     while True:
