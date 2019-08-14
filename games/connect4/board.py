@@ -36,7 +36,7 @@ class Board(games.base.board.Board):
         # check if previous move was on a forward diagonal and caused a win
         if self._check_fwd_diag(view, row, col):
             return True
-        return False  # unfinished
+        return False  # game not won
 
     def _check_rev_diag(self, view, row, col):
         """Check reverse diagnals for win conditions."""
@@ -94,8 +94,7 @@ class Board(games.base.board.Board):
     def __str__(self):
         """String representation of the object."""
         CELL_WIDTH = 3  # cell value + both side walls
-        COL_COUNT = 7  # Tic Tac Toe has 3 columns
-        sep = '-' * CELL_WIDTH * COL_COUNT  # seperator between each row
+        sep = '-' * CELL_WIDTH * self.COL_COUNT  # seperator between each row
         str_view = sep + '\n'
         for row in self.get_board_view():
             for cell in row:
